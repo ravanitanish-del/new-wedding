@@ -1,0 +1,1617 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goutam ❤️ Shraddha - Wedding Invitation</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display (serif) and Lora (serif for body) -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom CSS for fonts and smooth scrolling */
+        body {
+            font-family: 'Lora', serif;
+            scroll-behavior: smooth;
+        }
+
+        .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-lora {
+            font-family: 'Lora', serif;
+        }
+
+        /* Custom Tailwind colors */
+        .bg-blush-pink {
+            background-color: #F5E6E8;
+        }
+
+        /* Lightest pink */
+        .text-blush-pink-dark {
+            color: #D4A7A7;
+        }
+
+        /* Darker blush */
+        .bg-cream {
+            background-color: #F9FAFB;
+        }
+
+        .text-gold-light {
+            color: #FCD34D;
+        }
+
+        /* Light gold accent */
+        .border-gold-light {
+            border-color: #FCD34D;
+        }
+
+        /* Dark Mode Overrides */
+        html.dark .bg-cream {
+            background-color: #1a202c;
+        }
+
+        html.dark .text-gray-800 {
+            color: #e2e8f0;
+        }
+
+        html.dark .text-gray-700 {
+            color: #cbd5e0;
+        }
+
+        html.dark .text-gray-600 {
+            color: #a0aec0;
+        }
+
+        html.dark .bg-white {
+            background-color: #2d3748;
+        }
+
+        html.dark .shadow-xl {
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        }
+
+        html.dark .border-gray-300 {
+            border-color: #4a5568;
+        }
+
+        html.dark .bg-blush-pink {
+            background-color: #2d3748;
+        }
+
+        /* Darker background for sections */
+        html.dark .text-blush-pink-dark {
+            color: #f5e6e8;
+        }
+
+        /* Lighter text for dark mode */
+        html.dark .text-gold-light {
+            color: #fcd34d;
+        }
+
+        /* Keep gold bright */
+        html.dark .border-gold-light {
+            border-color: #fcd34d;
+        }
+
+        /* General Button Styles */
+        .btn-primary {
+            @apply bg-pink-400 text-white px-6 py-3 rounded-2xl shadow-lg hover:bg-pink-500 transition-all duration-300 transform hover:scale-105;
+        }
+
+        .btn-secondary {
+            @apply bg-transparent border-2 border-pink-400 text-pink-400 px-6 py-3 rounded-2xl shadow-lg hover:bg-pink-400 hover:text-white transition-all duration-300 transform hover:scale-105;
+        }
+
+        /* Section Title Underline Effect */
+        .section-title {
+            @apply font-playfair text-4xl md:text-5xl font-bold text-center mb-12 relative;
+        }
+
+        .section-title::after {
+            content: '';
+            @apply absolute bottom-[-10px] left-1/2 transform -translate-x-1/2 w-20 h-1 bg-pink-400 rounded-full;
+        }
+
+        html.dark .section-title::after {
+            @apply bg-gold-light;
+        }
+
+        /* Timeline Specific Styles */
+        .timeline-container {
+            position: relative;
+        }
+
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #FCD34D;
+            /* Light gold line */
+            transform: translateX(-50%);
+            z-index: 0;
+            display: none;
+            /* Hidden on mobile, shown by JS/media query */
+        }
+
+        @media (min-width: 768px) {
+            .timeline-container::before {
+                display: block;
+            }
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 4rem;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            transform: translate(-50%, -50%);
+            width: 24px;
+            height: 24px;
+            background-color: #FCD34D;
+            /* Gold dot */
+            border-radius: 50%;
+            border: 4px solid #F9FAFB;
+            /* Cream border */
+            z-index: 10;
+            display: none;
+            /* Hidden on mobile, shown by JS/media query */
+        }
+
+        html.dark .timeline-dot {
+            border-color: #1a202c;
+            /* Dark mode background color */
+        }
+
+        @media (min-width: 768px) {
+            .timeline-dot {
+                display: block;
+            }
+
+            .timeline-item:nth-child(odd) .timeline-content {
+                margin-right: 50%;
+                text-align: right;
+            }
+
+            .timeline-item:nth-child(even) .timeline-content {
+                margin-left: 50%;
+                text-align: left;
+            }
+        }
+
+        /* Lightbox styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .lightbox-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .lightbox-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            background-color: #fff;
+            padding: 1rem;
+            border-radius: 1rem;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+            margin: 0 auto;
+            border-radius: 0.75rem;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #fff;
+            color: #333;
+            border-radius: 50%;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: background-color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            background-color: #eee;
+        }
+
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #fff;
+            color: #333;
+            border-radius: 50%;
+            padding: 0.5rem;
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+            transition: background-color 0.2s;
+        }
+
+        .lightbox-nav:hover {
+            background-color: #eee;
+        }
+
+        .lightbox-prev {
+            left: 1rem;
+        }
+
+        .lightbox-next {
+            right: 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-cream text-gray-800 transition-colors duration-500">
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 right-0 z-40 p-4 shadow-md bg-white dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="font-playfair text-2xl font-bold text-pink-400">
+                G&S
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#hero" class="text-lg hover:text-pink-400 transition-colors" data-lang-key="home">Home</a>
+                <a href="#love-story" class="text-lg hover:text-pink-400 transition-colors"
+                    data-lang-key="story">Story</a>
+                <a href="#events" class="text-lg hover:text-pink-400 transition-colors"
+                    data-lang-key="events">Events</a>
+                <a href="#gallery" class="text-lg hover:text-pink-400 transition-colors"
+                    data-lang-key="galleryNav">Gallery</a>
+                <a href="#rsvp" class="text-lg hover:text-pink-400 transition-colors" data-lang-key="rsvpNav">RSVP</a>
+                <a href="#guestbook" class="text-lg hover:text-pink-400 transition-colors"
+                    data-lang-key="guestbookNav">Guestbook</a>
+                <a href="#gifts" class="text-lg hover:text-pink-400 transition-colors"
+                    data-lang-key="giftsNav">Gifts</a>
+                <a href="#travel" class="text-lg hover:text-pink-400 transition-colors"
+                    data-lang-key="travelNav">Travel</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button id="language-toggle"
+                    class="px-3 py-1 rounded-full border border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-white transition-colors">
+                    हिन्दी
+                </button>
+                <button id="dark-mode-toggle"
+                    class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-100 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                    aria-label="Toggle Dark Mode">
+                    <svg id="sun-icon" class="w-5 h-5 hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2" />
+                        <path d="M12 20v2" />
+                        <path d="M4.93 4.93l1.41 1.41" />
+                        <path d="M17.66 17.66l1.41 1.41" />
+                        <path d="M2 12h2" />
+                        <path d="M20 12h2" />
+                        <path d="M4.93 19.07l1.41-1.41" />
+                        <path d="M17.66 6.34l1.41-1.41" />
+                    </svg>
+                    <svg id="moon-icon" class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                        viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center justify-center text-center bg-cover bg-center"
+        style="background-image: url('https://placehold.co/1920x1080/F5E6E8/5C4B51?text=Wedding+Background');">
+        <div class="absolute inset-0 bg-black opacity-40"></div>
+        <div class="relative z-10 text-white p-6 rounded-2xl bg-black bg-opacity-30 backdrop-blur-sm">
+            <h1 class="font-playfair text-6xl md:text-8xl font-bold mb-4 animate-fade-in-up" data-lang-key="heroTitle">
+                Goutam ❤️ Shraddha</h1>
+            <p class="text-2xl md:text-3xl mb-2 animate-fade-in-up animation-delay-200">
+                <svg class="inline-block mr-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                    <line x1="16" x2="16" y1="2" y2="6" />
+                    <line x1="8" x2="8" y1="2" y2="6" />
+                    <line x1="3" x2="21" y1="10" y2="10" />
+                </svg> <span data-lang-key="heroDate">14 February 2026</span>
+            </p>
+            <p class="text-xl md:text-2xl mb-8 animate-fade-in-up animation-delay-400">
+                <svg class="inline-block mr-2" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg> <span data-lang-key="heroLocation">Mumbai, India</span>
+            </p>
+            <div
+                class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6 animate-fade-in-up animation-delay-600">
+                <a href="#rsvp" class="btn-primary" data-lang-key="saveTheDate">Save the Date</a>
+                <a href="#rsvp" class="btn-secondary" data-lang-key="rsvpNow">RSVP Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Love Story Section -->
+    <section id="love-story" class="py-20 px-4 bg-blush-pink dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="ourLoveStory">Our Love Story
+            </h2>
+            <div class="relative max-w-4xl mx-auto mt-16 timeline-container">
+                <!-- Timeline Items -->
+                <div class="flex flex-col space-y-16">
+                    <!-- Event 1: How We Met -->
+                    <div
+                        class="relative flex flex-col md:flex-row items-center md:items-stretch w-full md:w-1/2 md:self-start group timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div
+                            class="w-full md:w-auto md:flex-grow p-6 rounded-2xl shadow-xl bg-white dark:bg-gray-700 transition-all duration-300 group-hover:scale-105 timeline-content">
+                            <div class="flex items-center justify-center md:justify-end mb-4 text-gold-light">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-sparkles">
+                                    <path
+                                        d="M9.9 10.9c.5.5 1.4 1.5 2.1 2.2 1.2 1.1 1.9 2.2 2.7 3.3.6.8 1.3 1.9 2.1 2.9.4.5.8 1.1 1.3 1.6" />
+                                    <path d="M18 13c.4.5 1.1 1.2 1.7 1.7.9.8 1.6 1.5 2.2 2.3.4.5.8 1.1 1.2 1.6" />
+                                    <path
+                                        d="M12.2 2.2c.5.5 1.4 1.5 2.1 2.2 1.2 1.1 1.9 2.2 2.7 3.3.6.8 1.3 1.9 2.1 2.9.4.5.8 1.1 1.3 1.6" />
+                                    <path d="M22 7c.4.5 1.1 1.2 1.7 1.7.9.8 1.6 1.5 2.2 2.3.4.5.8 1.1 1.2 1.6" />
+                                    <path
+                                        d="M15.4 1.4c.5.5 1.4 1.5 2.1 2.2 1.2 1.1 1.9 2.2 2.7 3.3.6.8 1.3 1.9 2.1 2.9.4.5.8 1.1 1.3 1.6" />
+                                    <path d="M5 19c.4.5 1.1 1.2 1.7 1.7.9.8 1.6 1.5 2.2 2.3.4.5.8 1.1 1.2 1.6" />
+                                    <path
+                                        d="M2.2 12.2c.5.5 1.4 1.5 2.1 2.2 1.2 1.1 1.9 2.2 2.7 3.3.6.8 1.3 1.9 2.1 2.9.4.5.8 1.1 1.3 1.6" />
+                                    <path d="M7 22c.4.5 1.1 1.2 1.7 1.7.9.8 1.6 1.5 2.2 2.3.4.5.8 1.1 1.2 1.6" />
+                                    <path
+                                        d="M1.4 15.4c.5.5 1.4 1.5 2.1 2.2 1.2 1.1 1.9 2.2 2.7 3.3.6.8 1.3 1.9 2.1 2.9.4.5.8 1.1 1.3 1.6" />
+                                    <path d="M19 5c.4.5 1.1 1.2 1.7 1.7.9.8 1.6 1.5 2.2 2.3.4.5.8 1.1 1.2 1.6" />
+                                </svg>
+                                <h3 class="font-playfair text-3xl font-semibold" data-lang-key="howWeMet">How We Met
+                                </h3>
+                            </div>
+                            <p class="text-center md:text-right text-gray-700 dark:text-gray-200"
+                                data-lang-key="howWeMetDesc">It all began with a chance encounter at a friend's party.
+                                What started as a simple conversation quickly blossomed into something special.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event 2: First Trip -->
+                    <div
+                        class="relative flex flex-col md:flex-row items-center md:items-stretch w-full md:w-1/2 md:self-end group timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div
+                            class="w-full md:w-auto md:flex-grow p-6 rounded-2xl shadow-xl bg-white dark:bg-gray-700 transition-all duration-300 group-hover:scale-105 timeline-content">
+                            <div class="flex items-center justify-center md:justify-start mb-4 text-gold-light">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path
+                                        d="M22 17H2a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2Z" />
+                                    <path d="M12 10v4" />
+                                    <path d="M10 12h4" />
+                                </svg>
+                                <h3 class="font-playfair text-3xl font-semibold" data-lang-key="firstTrip">First Trip
+                                    Together</h3>
+                            </div>
+                            <p class="text-center md:text-left text-gray-700 dark:text-gray-200"
+                                data-lang-key="firstTripDesc">Our first adventure to the serene hills of Manali sealed
+                                our bond. Every moment was a memory in the making.</p>
+                        </div>
+                    </div>
+
+                    <!-- Event 3: The Proposal -->
+                    <div
+                        class="relative flex flex-col md:flex-row items-center md:items-stretch w-full md:w-1/2 md:self-start group timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div
+                            class="w-full md:w-auto md:flex-grow p-6 rounded-2xl shadow-xl bg-white dark:bg-gray-700 transition-all duration-300 group-hover:scale-105 timeline-content">
+                            <div class="flex items-center justify-center md:justify-end mb-4 text-gold-light">
+                                <svg class="mr-3" xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <h3 class="font-playfair text-3xl font-semibold" data-lang-key="theProposal">The
+                                    Proposal</h3>
+                            </div>
+                            <p class="text-center md:text-right text-gray-700 dark:text-gray-200"
+                                data-lang-key="theProposalDesc">Under a sky full of stars, Goutam got down on one knee.
+                                It was a magical moment, a 'yes' to forever.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wedding Events -->
+    <section id="events" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="weddingEvents">Wedding Events
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Event Card 1: Haldi -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                    <svg class="w-16 h-16 text-pink-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 12H2a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2Z" />
+                        <path d="M12 12h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Z" />
+                        <path d="M18 12h4a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Z" />
+                        <path d="M6 22H2a2 2 0 0 1-2-2v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2Z" />
+                        <path d="M12 22h4a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Z" />
+                        <path d="M18 22h4a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2Z" />
+                    </svg>
+                    <h3 class="font-playfair text-3xl font-semibold mb-2 text-gray-900 dark:text-gray-100"
+                        data-lang-key="haldi">Haldi Ceremony</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-1"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                        </svg> <span data-lang-key="haldiDate">12 Feb 2026</span> | <span
+                            data-lang-key="haldiTime">10:00 AM</span></p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-3"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg> <span data-lang-key="haldiLocation">The Royal Gardens</span></p>
+                    <p class="text-pink-600 dark:text-pink-300 font-semibold mb-4"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.5 12.5l-7.5 7.5L3 13.5" />
+                            <path d="M18.5 14.5l-5.5 5.5L3 13.5" />
+                            <path d="M12 2L9 5l-4 4-2 2v6h22v-6L20 9l-4-4-3-3Z" />
+                            <path d="M12 2v10" />
+                            <path d="M18 13.5V22" />
+                        </svg> <span data-lang-key="haldiDressCode">Yellow & White</span></p>
+                    <a href="https://maps.app.goo.gl/example1" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center text-pink-500 hover:text-pink-700 dark:text-pink-300 dark:hover:text-pink-400 transition-colors">
+                        View on Map <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </a>
+                </div>
+                <!-- Event Card 2: Mehndi -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                    <svg class="w-16 h-16 text-pink-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L9 5l-4 4-2 2v6h22v-6L20 9l-4-4-3-3Z" />
+                        <path d="M12 2v10" />
+                        <path d="M18 13.5V22" />
+                    </svg>
+                    <h3 class="font-playfair text-3xl font-semibold mb-2 text-gray-900 dark:text-gray-100"
+                        data-lang-key="mehndi">Mehndi Night</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-1"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                        </svg> <span data-lang-key="mehndiDate">12 Feb 2026</span> | <span
+                            data-lang-key="mehndiTime">06:00 PM</span></p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-3"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg> <span data-lang-key="mehndiLocation">The Courtyard</span></p>
+                    <p class="text-pink-600 dark:text-pink-300 font-semibold mb-4"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.5 12.5l-7.5 7.5L3 13.5" />
+                            <path d="M18.5 14.5l-5.5 5.5L3 13.5" />
+                            <path d="M12 2L9 5l-4 4-2 2v6h22v-6L20 9l-4-4-3-3Z" />
+                            <path d="M12 2v10" />
+                            <path d="M18 13.5V22" />
+                        </svg> <span data-lang-key="mehndiDressCode">Green & Orange</span></p>
+                    <a href="https://maps.app.goo.gl/example2" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center text-pink-500 hover:text-pink-700 dark:text-pink-300 dark:hover:text-pink-400 transition-colors">
+                        View on Map <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </a>
+                </div>
+                <!-- Event Card 3: Sangeet -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                    <svg class="w-16 h-16 text-pink-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18V5l12-2v13" />
+                        <path d="M9 18c-2.76 0-5 2-5 2s2.76 0 5 0" />
+                        <path d="M12 18V5l12-2v13" />
+                        <path d="M12 18c-2.76 0-5 2-5 2s2.76 0 5 0" />
+                    </svg>
+                    <h3 class="font-playfair text-3xl font-semibold mb-2 text-gray-900 dark:text-gray-100"
+                        data-lang-key="sangeet">Sangeet & Cocktail</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-1"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                        </svg> <span data-lang-key="sangeetDate">13 Feb 2026</span> | <span
+                            data-lang-key="sangeetTime">07:00 PM</span></p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-3"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg> <span data-lang-key="sangeetLocation">Grand Ballroom</span></p>
+                    <p class="text-pink-600 dark:text-pink-300 font-semibold mb-4"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.5 12.5l-7.5 7.5L3 13.5" />
+                            <path d="M18.5 14.5l-5.5 5.5L3 13.5" />
+                            <path d="M12 2L9 5l-4 4-2 2v6h22v-6L20 9l-4-4-3-3Z" />
+                            <path d="M12 2v10" />
+                            <path d="M18 13.5V22" />
+                        </svg> <span data-lang-key="sangeetDressCode">Indo-Western Glam</span></p>
+                    <a href="https://maps.app.goo.gl/example3" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center text-pink-500 hover:text-pink-700 dark:text-pink-300 dark:hover:text-pink-400 transition-colors">
+                        View on Map <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </a>
+                </div>
+                <!-- Event Card 4: Wedding -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                    <svg class="w-16 h-16 text-pink-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+                    </svg>
+                    <h3 class="font-playfair text-3xl font-semibold mb-2 text-gray-900 dark:text-gray-100"
+                        data-lang-key="wedding">Wedding Ceremony</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-1"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                        </svg> <span data-lang-key="weddingDate">14 Feb 2026</span> | <span
+                            data-lang-key="weddingTime">11:00 AM</span></p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-3"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg> <span data-lang-key="weddingLocation">The Grand Palace</span></p>
+                    <p class="text-pink-600 dark:text-pink-300 font-semibold mb-4"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.5 12.5l-7.5 7.5L3 13.5" />
+                            <path d="M18.5 14.5l-5.5 5.5L3 13.5" />
+                            <path d="M12 2L9 5l-4 4-2 2v6h22v-6L20 9l-4-4-3-3Z" />
+                            <path d="M12 2v10" />
+                            <path d="M18 13.5V22" />
+                        </svg> <span data-lang-key="weddingDressCode">Traditional Indian</span></p>
+                    <a href="https://maps.app.goo.gl/example4" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center text-pink-500 hover:text-pink-700 dark:text-pink-300 dark:hover:text-pink-400 transition-colors">
+                        View on Map <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </a>
+                </div>
+                <!-- Event Card 5: Reception -->
+                <div
+                    class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                    <svg class="w-16 h-16 text-pink-400 mx-auto mb-4" xmlns="http://www.w3.org/2000/svg" width="24"
+                        height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M7 21v-4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4" />
+                        <path d="M17 21v-8a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v8" />
+                        <path d="M17 3H7a4 4 0 0 0-4 4v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7a4 4 0 0 0-4-4Z" />
+                    </svg>
+                    <h3 class="font-playfair text-3xl font-semibold mb-2 text-gray-900 dark:text-gray-100"
+                        data-lang-key="reception">Reception Gala</h3>
+                    <p class="text-gray-700 dark:text-gray-300 mb-1"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+                            <line x1="16" x2="16" y1="2" y2="6" />
+                            <line x1="8" x2="8" y1="2" y2="6" />
+                            <line x1="3" x2="21" y1="10" y2="10" />
+                        </svg> <span data-lang-key="receptionDate">14 Feb 2026</span> | <span
+                            data-lang-key="receptionTime">07:00 PM</span></p>
+                    <p class="text-gray-700 dark:text-gray-300 mb-3"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg> <span data-lang-key="receptionLocation">The Grand Palace</span></p>
+                    <p class="text-pink-600 dark:text-pink-300 font-semibold mb-4"><svg class="inline-block mr-2"
+                            xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.5 12.5l-7.5 7.5L3 13.5" />
+                            <path d="M18.5 14.5l-5.5 5.5L3 13.5" />
+                            <path d="M12 2L9 5l-4 4-2 2v6h22v-6L20 9l-4-4-3-3Z" />
+                            <path d="M12 2v10" />
+                            <path d="M18 13.5V22" />
+                        </svg> <span data-lang-key="receptionDressCode">Formal Western/Indian</span></p>
+                    <a href="https://maps.app.goo.gl/example5" target="_blank" rel="noopener noreferrer"
+                        class="inline-flex items-center text-pink-500 hover:text-pink-700 dark:text-pink-300 dark:hover:text-pink-400 transition-colors">
+                        View on Map <svg class="ml-2" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Form -->
+    <section id="rsvp" class="py-20 px-4 bg-blush-pink dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto max-w-2xl">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="rsvp">RSVP</h2>
+            <p class="text-center text-lg mb-8 text-gray-700 dark:text-gray-200" data-lang-key="rsvpIntro">Please let us
+                know if you can make it!</p>
+            <form action="https://formspree.io/f/your_form_id" method="POST"
+                class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl space-y-6">
+                <div>
+                    <label for="name" class="block text-gray-700 dark:text-gray-200 text-lg font-semibold mb-2"
+                        data-lang-key="yourName">Your Name:</label>
+                    <input type="text" id="name" name="name" required
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100" />
+                </div>
+                <div>
+                    <label for="guests" class="block text-gray-700 dark:text-gray-200 text-lg font-semibold mb-2"
+                        data-lang-key="numberOfGuests">Number of Guests (including yourself):</label>
+                    <input type="number" id="guests" name="guests" min="1" value="1" required
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100" />
+                </div>
+                <div>
+                    <p class="block text-gray-700 dark:text-gray-200 text-lg font-semibold mb-2"
+                        data-lang-key="attendingEvents">Which events will you be attending?</p>
+                    <div class="space-y-2">
+                        <label class="flex items-center text-gray-700 dark:text-gray-200">
+                            <input type="checkbox" name="attending_events[]" value="Haldi Ceremony"
+                                class="mr-2 h-5 w-5 text-pink-400 rounded focus:ring-pink-400" />
+                            <span data-lang-key="haldi">Haldi Ceremony</span>
+                        </label>
+                        <label class="flex items-center text-gray-700 dark:text-gray-200">
+                            <input type="checkbox" name="attending_events[]" value="Mehndi Night"
+                                class="mr-2 h-5 w-5 text-pink-400 rounded focus:ring-pink-400" />
+                            <span data-lang-key="mehndi">Mehndi Night</span>
+                        </label>
+                        <label class="flex items-center text-gray-700 dark:text-gray-200">
+                            <input type="checkbox" name="attending_events[]" value="Sangeet & Cocktail"
+                                class="mr-2 h-5 w-5 text-pink-400 rounded focus:ring-pink-400" />
+                            <span data-lang-key="sangeet">Sangeet & Cocktail</span>
+                        </label>
+                        <label class="flex items-center text-gray-700 dark:text-gray-200">
+                            <input type="checkbox" name="attending_events[]" value="Wedding Ceremony"
+                                class="mr-2 h-5 w-5 text-pink-400 rounded focus:ring-pink-400" />
+                            <span data-lang-key="wedding">Wedding Ceremony</span>
+                        </label>
+                        <label class="flex items-center text-gray-700 dark:text-gray-200">
+                            <input type="checkbox" name="attending_events[]" value="Reception Gala"
+                                class="mr-2 h-5 w-5 text-pink-400 rounded focus:ring-pink-400" />
+                            <span data-lang-key="reception">Reception Gala</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <p class="block text-gray-700 dark:text-gray-200 text-lg font-semibold mb-2"
+                        data-lang-key="mealPreference">Meal Preference:</p>
+                    <div class="flex flex-wrap gap-4">
+                        <label class="flex items-center text-gray-700 dark:text-gray-200">
+                            <input type="radio" name="meal_preference" value="Vegetarian"
+                                class="mr-2 h-5 w-5 text-pink-400 focus:ring-pink-400" />
+                            <span data-lang-key="vegetarian">Vegetarian</span>
+                        </label>
+                        <label class="flex items-center text-gray-700 dark:text-gray-200">
+                            <input type="radio" name="meal_preference" value="Non-Vegetarian"
+                                class="mr-2 h-5 w-5 text-pink-400 focus:ring-pink-400" />
+                            <span data-lang-key="nonVegetarian">Non-Vegetarian</span>
+                        </label>
+                        <label class="flex items-center text-gray-700 dark:text-gray-200">
+                            <input type="radio" name="meal_preference" value="Vegan"
+                                class="mr-2 h-5 w-5 text-pink-400 focus:ring-pink-400" />
+                            <span data-lang-key="vegan">Vegan</span>
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label for="message" class="block text-gray-700 dark:text-gray-200 text-lg font-semibold mb-2"
+                        data-lang-key="messageForCouple">Message for the Couple:</label>
+                    <textarea id="message" name="message" rows="4"
+                        class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"></textarea>
+                </div>
+                <button type="submit" class="btn-primary w-full" data-lang-key="submitRsvp">
+                    Submit RSVP
+                </button>
+                <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+                    *Please replace "your_form_id" in the code with your actual Formspree form ID.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="gallery">Gallery</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <!-- Sample Images (replace with your own) -->
+                <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1649183424680-464747a8e43d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D')">
+                    <img src="https://images.unsplash.com/photo-1649183424680-464747a8e43d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                        alt="Pre-wedding Photo 1"
+                        class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D')">
+                    <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                        alt="Engagement Photo 2"
+                        class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D')">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                        alt="Pre-wedding Photo 3"
+                        class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D')">
+                    <img src="https://images.unsplash.com/photo-1525258946800-98cfd641d0de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                        alt="Engagement Photo 4"
+                        class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
+                    onclick="openLightbox('https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D')">
+                    <img src="https://images.unsplash.com/photo-1537633552985-df8429e8048b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                        alt="Pre-wedding Photo 5"
+                        class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="relative overflow-hidden rounded-2xl shadow-lg cursor-pointer group"
+                    onclick="openLightbox('https://plus.unsplash.com/premium_photo-1711132425055-1c289c69b950?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D')">
+                    <img src="https://plus.unsplash.com/premium_photo-1711132425055-1c289c69b950?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzd8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                        alt="Engagement Photo 6"
+                        class="w-full h-full object-cover transform transition-transform duration-300 group-hover:scale-110">
+                    <div
+                        class="absolute inset-0 bg-black bg-opacity-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <svg class="w-12 h-12 text-white" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3Z" />
+                            <circle cx="12" cy="13" r="3" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instagram Feed Placeholder -->
+            <div class="mt-16 text-center">
+                <h3 class="font-playfair text-3xl font-semibold mb-4 text-gray-900 dark:text-gray-100"
+                    data-lang-key="instagramFeed">Instagram Feed</h3>
+                <p class="text-gray-700 dark:text-gray-200 mb-4">
+                    <span data-lang-key="shareMoments">Share your moments with us using</span> <span
+                        class="font-bold text-pink-500">#GoutamWedsShraddha</span>
+                </p>
+                <div class="bg-gray-100 dark:bg-gray-700 p-6 rounded-2xl shadow-inner inline-block">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        Instagram feed placeholder. You can embed a widget from tools like LightWidget or SnapWidget
+                        here.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox HTML -->
+    <div id="lightbox-overlay" class="lightbox-overlay">
+        <div class="lightbox-content">
+            <button class="lightbox-close" onclick="closeLightbox()">✖</button>
+            <img id="lightbox-image" src="" alt="Lightbox Image">
+            <button class="lightbox-nav lightbox-prev" onclick="prevImage()">&#8249;</button>
+            <button class="lightbox-nav lightbox-next" onclick="nextImage()">&#8250;</button>
+        </div>
+    </div>
+
+    <!-- Wedding Party Section -->
+    <section id="wedding-party" class="py-20 px-4 bg-blush-pink dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="weddingParty">The Wedding Party
+            </h2>
+            <div class="space-y-12">
+                <div>
+                    <h3 class="font-playfair text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100"
+                        data-lang-key="bridesmaids">Bridesmaids</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Bridesmaid 1 -->
+                        <div
+                            class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1481066717861-4775e000c88a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                                alt="Priya Sharma"
+                                class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-pink-200 dark:border-pink-700">
+                            <h4 class="font-playfair text-2xl font-semibold text-gray-900 dark:text-gray-100">Priya
+                                Sharma</h4>
+                            <p class="text-pink-600 dark:text-pink-300">Maid of Honor</p>
+                        </div>
+                        <!-- Bridesmaid 2 -->
+                        <div
+                            class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1481066717861-4775e000c88a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                                alt="Anjali Singh"
+                                class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-pink-200 dark:border-pink-700">
+                            <h4 class="font-playfair text-2xl font-semibold text-gray-900 dark:text-gray-100">Anjali
+                                Singh</h4>
+                            <p class="text-pink-600 dark:text-pink-300">Bridesmaid</p>
+                        </div>
+                        <!-- Bridesmaid 3 -->
+                        <div
+                            class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1481066717861-4775e000c88a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                                alt="Neha Gupta"
+                                class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-pink-200 dark:border-pink-700">
+                            <h4 class="font-playfair text-2xl font-semibold text-gray-900 dark:text-gray-100">Neha Gupta
+                            </h4>
+                            <p class="text-pink-600 dark:text-pink-300">Bridesmaid</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="font-playfair text-3xl font-semibold text-center mb-8 text-gray-900 dark:text-gray-100"
+                        data-lang-key="groomsmen">Groomsmen</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                        <!-- Groomsman 1 -->
+                        <div
+                            class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1481066717861-4775e000c88a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTl8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D"
+                                alt="Rahul Verma"
+                                class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-pink-200 dark:border-pink-700">
+                            <h4 class="font-playfair text-2xl font-semibold text-gray-900 dark:text-gray-100">Rahul
+                                Verma</h4>
+                            <p class="text-pink-600 dark:text-pink-300">Best Man</p>
+                        </div>
+                        <!-- Groomsman 2 -->
+                        <div
+                            class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1517456363055-5d162a453d6d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D" alt="Amit Kumar"
+                                class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-pink-200 dark:border-pink-700">
+                            <h4 class="font-playfair text-2xl font-semibold text-gray-900 dark:text-gray-100">Amit Kumar
+                            </h4>
+                            <p class="text-pink-600 dark:text-pink-300">Groomsman</p>
+                        </div>
+                        <!-- Groomsman 3 -->
+                        <div
+                            class="bg-white dark:bg-gray-700 p-6 rounded-2xl shadow-xl text-center transition-all duration-300 hover:scale-105">
+                            <img src="https://images.unsplash.com/photo-1517456363055-5d162a453d6d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NTZ8fHdlZGRpbmd8ZW58MHx8MHx8fDA%3D" alt="Sanjay Reddy"
+                                class="w-32 h-32 rounded-full mx-auto mb-4 object-cover border-4 border-pink-200 dark:border-pink-700">
+                            <h4 class="font-playfair text-2xl font-semibold text-gray-900 dark:text-gray-100">Sanjay
+                                Reddy</h4>
+                            <p class="text-pink-600 dark:text-pink-300">Groomsman</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section id="countdown" class="py-20 px-4 text-center">
+        <div class="container mx-auto">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="countdown">Countdown to Our Big
+                Day!</h2>
+            <div
+                class="flex justify-center items-center space-x-4 md:space-x-8 lg:space-x-12 bg-blush-pink dark:bg-gray-700 p-8 rounded-2xl shadow-xl max-w-3xl mx-auto">
+                <div class="flex flex-col items-center">
+                    <div id="days"
+                        class="font-playfair text-5xl md:text-6xl font-bold text-pink-600 dark:text-pink-300 mb-2">00
+                    </div>
+                    <p class="text-lg md:text-xl text-gray-700 dark:text-gray-200" data-lang-key="days">Days</p>
+                </div>
+                <div class="font-playfair text-5xl md:text-6xl font-bold text-pink-600 dark:text-pink-300">:</div>
+                <div class="flex flex-col items-center">
+                    <div id="hours"
+                        class="font-playfair text-5xl md:text-6xl font-bold text-pink-600 dark:text-pink-300 mb-2">00
+                    </div>
+                    <p class="text-lg md:text-xl text-gray-700 dark:text-gray-200" data-lang-key="hours">Hours</p>
+                </div>
+                <div class="font-playfair text-5xl md:text-6xl font-bold text-pink-600 dark:text-pink-300">:</div>
+                <div class="flex flex-col items-center">
+                    <div id="minutes"
+                        class="font-playfair text-5xl md:text-6xl font-bold text-pink-600 dark:text-pink-300 mb-2">00
+                    </div>
+                    <p class="text-lg md:text-xl text-gray-700 dark:text-gray-200" data-lang-key="minutes">Minutes</p>
+                </div>
+                <div class="font-playfair text-5xl md:text-6xl font-bold text-pink-600 dark:text-pink-300">:</div>
+                <div class="flex flex-col items-center">
+                    <div id="seconds"
+                        class="font-playfair text-5xl md:text-6xl font-bold text-pink-600 dark:text-pink-300 mb-2">00
+                    </div>
+                    <p class="text-lg md:text-xl text-gray-700 dark:text-gray-200" data-lang-key="seconds">Seconds</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gifts / Registry -->
+    <section id="gifts" class="py-20 px-4 bg-blush-pink dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto text-center max-w-2xl">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="giftsRegistry">Gifts & Registry
+            </h2>
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl">
+                <svg class="w-20 h-20 text-pink-400 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 12V7H4v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2Z" />
+                    <path d="M12 7V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v3" />
+                    <path d="M12 7V4a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v3" />
+                    <path d="M12 22h6a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2h-6a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2Z" />
+                </svg>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-6" data-lang-key="giftsMessage">
+                    Your presence is the greatest gift!
+                </p>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">
+                    If you still wish to bless us with a gift, you can find our registries here:
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                    <a href="#" class="btn-primary">
+                        Amazon Registry
+                    </a>
+                    <a href="#" class="btn-secondary">
+                        Other Registry
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel & Hotel Info -->
+    <section id="travel" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="travelStay">Travel & Stay Info
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl">
+                    <h3 class="font-playfair text-3xl font-semibold mb-4 text-gray-900 dark:text-gray-100"
+                        data-lang-key="hotelsNearby">Hotels Nearby</h3>
+                    <p class="text-gray-700 dark:text-gray-200 mb-4">
+                        We recommend the following hotels for your stay:
+                    </p>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-200">
+                        <li><a href="#" class="text-pink-500 hover:underline">The Grand Hyatt Mumbai</a></li>
+                        <li><a href="#" class="text-pink-500 hover:underline">Taj Lands End, Bandra</a></li>
+                        <li><a href="#" class="text-pink-500 hover:underline">Novotel Mumbai Juhu Beach</a></li>
+                    </ul>
+                    <div class="mt-6 rounded-xl overflow-hidden">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3771.184323210459!2d72.8407851149008!3d19.04944988710266!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c997e0b5711b%3A0x6b8d0e7e1b5f7e7d!2sThe%20Grand%20Palace!5e0!3m2!1sen!2sin!4v1678912345678!5m2!1sen!2sin"
+                            width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade" title="Wedding Location Map"></iframe>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl">
+                    <h3 class="font-playfair text-3xl font-semibold mb-4 text-gray-900 dark:text-gray-100"
+                        data-lang-key="airportInfo">Airport Information & Travel Tips</h3>
+                    <p class="text-gray-700 dark:text-gray-200 mb-4">
+                        The nearest airport is Chhatrapati Shivaji Maharaj International Airport (BOM).
+                    </p>
+                    <h4 class="font-semibold text-gray-800 dark:text-gray-100 mb-2" data-lang-key="travelTips">Local
+                        Travel Tips:</h4>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 dark:text-gray-200 mb-4">
+                        <li>Uber/Ola are readily available for transport.</li>
+                        <li>Local trains are a quick way to get around, but can be crowded.</li>
+                        <li>Traffic can be heavy, plan your travel accordingly.</li>
+                    </ul>
+                    <h4 class="font-semibold text-gray-800 dark:text-gray-100 mb-2" data-lang-key="contactInfo">Contact
+                        Information:</h4>
+                    <p class="text-gray-700 dark:text-gray-200">
+                        For any travel assistance, please contact:
+                    </p>
+                    <p class="text-pink-600 dark:text-pink-300 font-semibold">
+                        Wedding Coordinator: +91 98765 43210
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Code & Invite Download -->
+    <section id="qr-code-invite" class="py-20 px-4 bg-blush-pink dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto text-center max-w-xl">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="qrCodeInvite">QR Code & Invite
+            </h2>
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl">
+                <svg class="w-20 h-20 text-pink-400 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="8" height="8" x="2" y="2" rx="1" />
+                    <rect width="8" height="8" x="14" y="2" rx="1" />
+                    <rect width="8" height="8" x="2" y="14" rx="1" />
+                    <path d="M14 14h.01" />
+                    <path d="M18 18h.01" />
+                    <path d="M18 14h.01" />
+                    <path d="M14 18h.01" />
+                </svg>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-6" data-lang-key="scanForWebsite">
+                    Scan for Website
+                </p>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://your-wedding-website.com"
+                    alt="QR Code for Wedding Website"
+                    class="w-48 h-48 mx-auto border-4 border-pink-200 dark:border-pink-700 rounded-xl mb-8">
+                <a href="https://www.africau.edu/images/default/sample.pdf"
+                    download="Goutam_Shraddha_Wedding_Invite.pdf" class="btn-primary" data-lang-key="downloadInvite">
+                    Download Invite
+                </a>
+                <p class="text-center text-sm text-gray-500 dark:text-gray-400 mt-4">
+                    *The QR code links to a placeholder. Replace "https://your-wedding-website.com" with your actual
+                    website URL.
+                    The invite download is a sample PDF.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guestbook -->
+    <section id="guestbook" class="py-20 px-4">
+        <div class="container mx-auto max-w-2xl">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="guestbook">Guestbook</h2>
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl space-y-6">
+                <p class="text-center text-lg text-gray-700 dark:text-gray-200" data-lang-key="leaveBlessing">Leave a
+                    Blessing or Comment</p>
+                <form id="guestbook-form" class="space-y-4">
+                    <div>
+                        <label for="guest-comment" class="sr-only" data-lang-key="yourComment">Your Comment</label>
+                        <textarea id="guest-comment" placeholder="Your Comment..." rows="4"
+                            class="w-full p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-pink-400 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-100"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full" data-lang-key="postComment">
+                        Post Comment
+                    </button>
+                </form>
+
+                <div id="guestbook-messages" class="mt-8 pt-6 border-t border-gray-200 dark:border-gray-600">
+                    <h3 class="font-playfair text-2xl font-semibold mb-4 text-gray-900 dark:text-gray-100">Guest
+                        Messages:</h3>
+                    <div class="space-y-4 max-h-80 overflow-y-auto pr-2">
+                        <!-- Guest messages will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Music Playlist -->
+    <section id="music-playlist" class="py-20 px-4 bg-blush-pink dark:bg-gray-800 transition-colors duration-500">
+        <div class="container mx-auto text-center max-w-2xl">
+            <h2 class="section-title text-pink-600 dark:text-gold-light" data-lang-key="musicPlaylist">Our Wedding
+                Playlist</h2>
+            <div class="bg-white dark:bg-gray-700 p-8 rounded-2xl shadow-xl">
+                <svg class="w-20 h-20 text-pink-400 mx-auto mb-6" xmlns="http://www.w3.org/2000/svg" width="24"
+                    height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 18V5l12-2v13" />
+                    <path d="M9 18c-2.76 0-5 2-5 2s2.76 0 5 0" />
+                    <path d="M12 18V5l12-2v13" />
+                    <path d="M12 18c-2.76 0-5 2-5 2s2.76 0 5 0" />
+                </svg>
+                <p class="text-xl md:text-2xl text-gray-700 dark:text-gray-200 mb-6" data-lang-key="enjoyPlaylist">
+                    Enjoy our curated playlist for the wedding festivities!
+                </p>
+                <div class="aspect-w-16 aspect-h-9 w-full rounded-2xl overflow-hidden shadow-lg">
+                    <iframe src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator"
+                        width="100%" height="380" frameborder="0" allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy" title="Wedding Playlist" class="rounded-2xl"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+        class="py-12 px-4 text-center bg-gray-100 dark:bg-gray-900 text-gray-700 dark:text-gray-300 transition-colors duration-500">
+        <div class="container mx-auto">
+            <p class="font-playfair text-3xl font-bold text-pink-600 dark:text-gold-light mb-4"
+                data-lang-key="thankYou">Thank You!</p>
+            <p class="text-lg mb-6" data-lang-key="goutamShraddha">Goutam & Shraddha</p>
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="#"
+                    class="text-gray-600 hover:text-pink-400 dark:text-gray-300 dark:hover:text-pink-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                        <line x1="17.5" x2="17.5" y1="6.5" y2="6.5" />
+                    </svg>
+                </a>
+                <a href="#"
+                    class="text-gray-600 hover:text-pink-400 dark:text-gray-300 dark:hover:text-pink-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                    </svg>
+                </a>
+                <a href="#"
+                    class="text-gray-600 hover:text-pink-400 dark:text-gray-300 dark:hover:text-pink-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.4 3 4l-1 2c2.8 1.5 5 3.5 7 5.5s4 4 7 5.5l1-4c1.6 1.5 3 3.5 4 5.5s2 4 2 4" />
+                    </svg>
+                </a>
+                <a href="mailto:goutamshraddha@example.com"
+                    class="text-gray-600 hover:text-pink-400 dark:text-gray-300 dark:hover:text-pink-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect width="20" height="16" x="2" y="4" rx="2" />
+                        <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                    </svg>
+                </a>
+                <a href="tel:+919876543210"
+                    class="text-gray-600 hover:text-pink-400 dark:text-gray-300 dark:hover:text-pink-300 transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2 3.18 2 2 0 0 1 4.18 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                </a>
+            </div>
+            <p class="text-sm">
+                &copy; <span id="current-year"></span> <span data-lang-key="goutamShraddha">Goutam & Shraddha</span>.
+                <span data-lang-key="allRightsReserved">All Rights Reserved.</span>
+            </p>
+            <p class="text-sm mt-2">
+                <span data-lang-key="designedBy">Designed & Developed by</span> Developergtm.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // --- Dark Mode Toggle ---
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+
+        // Check for saved theme preference or system preference
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            sunIcon.classList.remove('hidden');
+            moonIcon.classList.add('hidden');
+        } else {
+            document.documentElement.classList.remove('dark');
+            moonIcon.classList.remove('hidden');
+            sunIcon.classList.add('hidden');
+        }
+
+        darkModeToggle.addEventListener('click', () => {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.theme = 'light';
+                moonIcon.classList.remove('hidden');
+                sunIcon.classList.add('hidden');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.theme = 'dark';
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        });
+
+        // --- Multilingual Switch ---
+        const translations = {
+            en: {
+                home: "Home",
+                story: "Story",
+                events: "Events",
+                galleryNav: "Gallery",
+                rsvpNav: "RSVP",
+                guestbookNav: "Guestbook",
+                giftsNav: "Gifts",
+                travelNav: "Travel",
+                heroTitle: "Goutam ❤️ Shraddha",
+                heroDate: "14 February 2026",
+                heroLocation: "Mumbai, India",
+                saveTheDate: "Save the Date",
+                rsvpNow: "RSVP Now",
+                ourLoveStory: "Our Love Story",
+                howWeMet: "How We Met",
+                howWeMetDesc: "It all began with a chance encounter at a friend's party. What started as a simple conversation quickly blossomed into something special.",
+                firstTrip: "First Trip Together",
+                firstTripDesc: "Our first adventure to the serene hills of Manali sealed our bond. Every moment was a memory in the making.",
+                theProposal: "The Proposal",
+                theProposalDesc: "Under a sky full of stars, Goutam got down on one knee. It was a magical moment, a 'yes' to forever.",
+                weddingEvents: "Wedding Events",
+                haldi: "Haldi Ceremony",
+                haldiDate: "12 Feb 2026",
+                haldiTime: "10:00 AM",
+                haldiLocation: "The Royal Gardens",
+                haldiDressCode: "Yellow & White",
+                mehndi: "Mehndi Night",
+                mehndiDate: "12 Feb 2026",
+                mehndiTime: "06:00 PM",
+                mehndiLocation: "The Courtyard",
+                mehndiDressCode: "Green & Orange",
+                sangeet: "Sangeet & Cocktail",
+                sangeetDate: "13 Feb 2026",
+                sangeetTime: "07:00 PM",
+                sangeetLocation: "Grand Ballroom",
+                sangeetDressCode: "Indo-Western Glam",
+                wedding: "Wedding Ceremony",
+                weddingDate: "14 Feb 2026",
+                weddingTime: "11:00 AM",
+                weddingLocation: "The Grand Palace",
+                weddingDressCode: "Traditional Indian",
+                reception: "Reception Gala",
+                receptionDate: "14 Feb 2026",
+                receptionTime: "07:00 PM",
+                receptionLocation: "The Grand Palace",
+                receptionDressCode: "Formal Western/Indian",
+                rsvp: "RSVP",
+                rsvpIntro: "Please let us know if you can make it!",
+                yourName: "Your Name",
+                numberOfGuests: "Number of Guests (including yourself)",
+                attendingEvents: "Which events will you be attending?",
+                mealPreference: "Meal Preference",
+                vegetarian: "Vegetarian",
+                nonVegetarian: "Non-Vegetarian",
+                vegan: "Vegan",
+                messageForCouple: "Message for the Couple",
+                submitRsvp: "Submit RSVP",
+                gallery: "Gallery",
+                instagramFeed: "Instagram Feed",
+                shareMoments: "Share your moments with us using",
+                weddingParty: "The Wedding Party",
+                bridesmaids: "Bridesmaids",
+                groomsmen: "Groomsmen",
+                parents: "Parents",
+                countdown: "Countdown to Our Big Day!",
+                days: "Days",
+                hours: "Hours",
+                minutes: "Minutes",
+                seconds: "Seconds",
+                giftsRegistry: "Gifts & Registry",
+                giftsMessage: "Your presence is the greatest gift!",
+                travelStay: "Travel & Stay Info",
+                hotelsNearby: "Hotels Nearby",
+                airportInfo: "Airport Information",
+                travelTips: "Local Travel Tips",
+                contactInfo: "Contact Information",
+                qrCodeInvite: "QR Code & Invite",
+                scanForWebsite: "Scan for Website",
+                downloadInvite: "Download Invite",
+                guestbook: "Guestbook",
+                leaveBlessing: "Leave a Blessing or Comment",
+                yourComment: "Your Comment",
+                postComment: "Post Comment",
+                musicPlaylist: "Our Wedding Playlist",
+                enjoyPlaylist: "Enjoy our curated playlist for the wedding festivities!",
+                thankYou: "Thank You!",
+                goutamShraddha: "Goutam & Shraddha",
+                allRightsReserved: "All Rights Reserved.",
+                designedBy: "Designed & Developed by",
+            },
+            hi: {
+                home: "होम",
+                story: "कहानी",
+                events: "कार्यक्रम",
+                galleryNav: "गैलरी",
+                rsvpNav: "RSVP करें",
+                guestbookNav: "अतिथि पुस्तिका",
+                giftsNav: "उपहार",
+                travelNav: "यात्रा",
+                heroTitle: "गौतम ❤️ श्रद्धा",
+                heroDate: "14 फरवरी 2026",
+                heroLocation: "मुंबई, भारत",
+                saveTheDate: "तारीख सहेजें",
+                rsvpNow: "अभी RSVP करें",
+                ourLoveStory: "हमारी प्रेम कहानी",
+                howWeMet: "हम कैसे मिले",
+                howWeMetDesc: "यह सब एक दोस्त की पार्टी में एक आकस्मिक मुलाकात से शुरू हुआ। एक साधारण बातचीत से जो शुरू हुआ, वह जल्दी ही कुछ खास में बदल गया।",
+                firstTrip: "पहली यात्रा एक साथ",
+                firstTripDesc: "मनाली की शांत पहाड़ियों की हमारी पहली साहसिक यात्रा ने हमारे बंधन को मजबूत किया। हर पल एक यादगार पल था।",
+                theProposal: "प्रस्ताव",
+                theProposalDesc: "तारों से भरे आकाश के नीचे, गौतम एक घुटने पर बैठ गए। यह एक जादुई पल था, हमेशा के लिए 'हाँ'।",
+                weddingEvents: "विवाह के कार्यक्रम",
+                haldi: "हल्दी समारोह",
+                haldiDate: "12 फरवरी 2026",
+                haldiTime: "सुबह 10:00 बजे",
+                haldiLocation: "द रॉयल गार्डन्स",
+                haldiDressCode: "पीला और सफेद",
+                mehndi: "मेहंदी की रात",
+                mehndiDate: "12 फरवरी 2026",
+                mehndiTime: "शाम 06:00 बजे",
+                mehndiLocation: "द कोर्टयार्ड",
+                mehndiDressCode: "हरा और नारंगी",
+                sangeet: "संगीत और कॉकटेल",
+                sangeetDate: "13 फरवरी 2026",
+                sangeetTime: "शाम 07:00 बजे",
+                sangeetLocation: "ग्रैंड बॉलरूम",
+                sangeetDressCode: "इंडो-वेस्टर्न ग्लैम",
+                wedding: "विवाह समारोह",
+                weddingDate: "14 फरवरी 2026",
+                weddingTime: "सुबह 11:00 बजे",
+                weddingLocation: "द ग्रैंड पैलेस",
+                weddingDressCode: "पारंपरिक भारतीय",
+                reception: "रिसेप्शन गाला",
+                receptionDate: "14 फरवरी 2026",
+                receptionTime: "शाम 07:00 बजे",
+                receptionLocation: "द ग्रैंड पैलेस",
+                receptionDressCode: "औपचारिक पश्चिमी/भारतीय",
+                rsvp: "RSVP करें",
+                rsvpIntro: "कृपया हमें बताएं कि क्या आप आ सकते हैं!",
+                yourName: "आपका नाम",
+                numberOfGuests: "मेहमानों की संख्या (आपको मिलाकर)",
+                attendingEvents: "आप किन कार्यक्रमों में शामिल होंगे?",
+                mealPreference: "भोजन वरीयता",
+                vegetarian: "शाकाहारी",
+                nonVegetarian: "मांसाहारी",
+                vegan: "शाकाहारी (वीगन)",
+                messageForCouple: "युगल के लिए संदेश",
+                submitRsvp: "RSVP सबमिट करें",
+                gallery: "गैलरी",
+                instagramFeed: "इंस्टाग्राम फ़ीड",
+                shareMoments: "अपने पलों को हमारे साथ साझा करें",
+                weddingParty: "विवाह पार्टी",
+                bridesmaids: "दुल्हन की सहेलियाँ",
+                groomsmen: "दूल्हे के दोस्त",
+                parents: "माता-पिता",
+                countdown: "हमारे बड़े दिन की उलटी गिनती!",
+                days: "दिन",
+                hours: "घंटे",
+                minutes: "मिनट",
+                seconds: "सेकंड",
+                giftsRegistry: "उपहार और रजिस्ट्री",
+                giftsMessage: "आपकी उपस्थिति ही हमारा सबसे बड़ा उपहार है!",
+                travelStay: "यात्रा और ठहरने की जानकारी",
+                hotelsNearby: "आस-पास के होटल",
+                airportInfo: "हवाई अड्डे की जानकारी",
+                travelTips: "स्थानीय यात्रा युक्तियाँ",
+                contactInfo: "संपर्क जानकारी",
+                qrCodeInvite: "QR कोड और आमंत्रण",
+                scanForWebsite: "वेबसाइट के लिए स्कैन करें",
+                downloadInvite: "आमंत्रण डाउनलोड करें",
+                guestbook: "अतिथि पुस्तिका",
+                leaveBlessing: "एक आशीर्वाद या टिप्पणी छोड़ें",
+                yourComment: "आपकी टिप्पणी",
+                postComment: "टिप्पणी पोस्ट करें",
+                musicPlaylist: "हमारी शादी की प्लेलिस्ट",
+                enjoyPlaylist: "शादी के जश्न के लिए हमारी क्यूरेटेड प्लेलिस्ट का आनंद लें!",
+                thankYou: "धन्यवाद!",
+                goutamShraddha: "गौतम और श्रद्धा",
+                allRightsReserved: "सभी अधिकार सुरक्षित।",
+                designedBy: "द्वारा डिज़ाइन और विकसित",
+            }
+        };
+
+        let currentLanguage = 'en'; // Default language
+
+        function updateContent() {
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[currentLanguage] && translations[currentLanguage][key]) {
+                    element.textContent = translations[currentLanguage][key];
+                }
+            });
+            // Update specific elements that need dynamic content like placeholder
+            document.getElementById('guest-comment').placeholder = translations[currentLanguage]['yourComment'] + "...";
+            document.getElementById('language-toggle').textContent = currentLanguage === 'en' ? 'हिन्दी' : 'English';
+        }
+
+        document.getElementById('language-toggle').addEventListener('click', () => {
+            currentLanguage = currentLanguage === 'en' ? 'hi' : 'en';
+            updateContent();
+        });
+
+        // Set initial content on load
+        document.addEventListener('DOMContentLoaded', updateContent);
+
+
+        // --- Countdown Timer ---
+        const weddingDate = new Date("Feb 14, 2026 11:00:00").getTime(); // Set your wedding date and time
+
+        const countdownFunction = setInterval(function () {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerHTML = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerHTML = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerHTML = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerHTML = seconds.toString().padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownFunction);
+                document.getElementById("countdown").innerHTML = "<h2 class='section-title text-pink-600 dark:text-gold-light'>We're Married!</h2>";
+            }
+        }, 1000);
+
+        // --- Guestbook Functionality ---
+        const guestbookForm = document.getElementById('guestbook-form');
+        const guestbookMessagesContainer = document.querySelector('#guestbook-messages .space-y-4');
+
+        guestbookForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+            const commentText = document.getElementById('guest-comment').value.trim();
+
+            if (commentText) {
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'bg-gray-50 dark:bg-gray-800 p-4 rounded-xl shadow-sm border border-gray-200 dark:border-gray-600';
+                messageDiv.innerHTML = `
+                    <p class="text-gray-800 dark:text-gray-100">${commentText}</p>
+                    <p class="text-right text-sm text-gray-500 dark:text-gray-400 mt-2">- Anonymous Guest</p>
+                `;
+                guestbookMessagesContainer.prepend(messageDiv); // Add new messages to the top
+                document.getElementById('guest-comment').value = ''; // Clear textarea
+            }
+        });
+
+        // --- Gallery Lightbox ---
+        const galleryImages = document.querySelectorAll('#gallery img');
+        const lightboxOverlay = document.getElementById('lightbox-overlay');
+        const lightboxImage = document.getElementById('lightbox-image');
+        let currentImageIndex = 0;
+
+        function openLightbox(src) {
+            lightboxImage.src = src;
+            lightboxOverlay.classList.add('active');
+            // Find the index of the opened image
+            for (let i = 0; i < galleryImages.length; i++) {
+                if (galleryImages[i].src === src) {
+                    currentImageIndex = i;
+                    break;
+                }
+            }
+        }
+
+        function closeLightbox() {
+            lightboxOverlay.classList.remove('active');
+        }
+
+        function showImage(index) {
+            if (index < 0) {
+                index = galleryImages.length - 1;
+            } else if (index >= galleryImages.length) {
+                index = 0;
+            }
+            currentImageIndex = index;
+            lightboxImage.src = galleryImages[currentImageIndex].src;
+        }
+
+        function nextImage() {
+            showImage(currentImageIndex + 1);
+        }
+
+        function prevImage() {
+            showImage(currentImageIndex - 1);
+        }
+
+        // Close lightbox on escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && lightboxOverlay.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+
+        // Update current year in footer
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+    </script>
+</body>
+
+</html>
